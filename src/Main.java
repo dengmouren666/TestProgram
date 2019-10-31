@@ -11,10 +11,17 @@ public class Main {
         ChessBoard computer = new ChessBoard();
         int r = random.nextInt(2);
         //
-        String[][] chess ={{"_","_","_"},{"_","_","_"},{"_","_","_"}};
+        //String[][] chess ={{"_","_","_"},{"_","_","_"},{"_","_","_"}};
         System.out.print("Please input the WinNumber");
         int winnumber = number.nextInt();
-        computer.putChessBoard(chess);
+        System.out.print("Please input the edge");
+        int edge = number.nextInt();
+        String[][] chess = new String[edge][edge];
+        for(int i = 0;i < edge;i ++)
+            for (int j = 0;j < edge;j ++){
+                chess[i][j] = "_";
+            }
+        computer.putChessBoard(chess,edge);
         switch (r){
             case 0 : System.out.println("Please A input first");
                      break;
@@ -35,8 +42,8 @@ public class Main {
             a.setX(x);
             a.setY(y);
             r = a.putChess(chess,r);
-            flag = is.startJudge(x,y,chess,winnumber);
-            play.putChessBoard(chess);
+            flag = is.startJudge(x,y,chess,winnumber,edge);
+            play.putChessBoard(chess,edge);
             v=1;
         }
         switch (r){
